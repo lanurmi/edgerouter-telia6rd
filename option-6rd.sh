@@ -20,6 +20,8 @@
 #
 
 PATH=/sbin:/usr/local/bin:$PATH
+export vyatta_bindir=/opt/vyatta/bin/
+export vyatta_sbindir=/opt/vyatta/sbin/
 source /opt/vyatta/etc/functions/script-template
 
 # Log output and errors to syslog
@@ -189,6 +191,9 @@ log_6rd() {
 	/bin/cat > /config/telia-6rd-cleanup <<EOF
 	#!/bin/vbash
 	PATH=/sbin:/usr/local/bin:$PATH
+	export vyatta_bindir=/opt/vyatta/bin/
+	export vyatta_sbindir=/opt/vyatta/sbin/
+
 	source /opt/vyatta/etc/functions/script-template
 	configure
 	delete interfaces tunnel tun0
