@@ -101,6 +101,7 @@ log_6rd() {
 		return
 	fi
 
+	lan_ip6addr_nomask="$(echo "$lan_ip6addr" | awk '{split($0,a,"/"); print a[1]}')"
 
 
 	if [ -f /config/telia-6rd-cleanup ]; then
@@ -182,7 +183,7 @@ log_6rd() {
     set interfaces $LANTYPE_IF ipv6 router-advert send-advert true
 
 	# Advertise Edgerouter IPv6-address as DNS-server
-	set interfaces $LANTYPE_IF ipv6 router-advert name-server "${lan_ip6addr}"
+	set interfaces $LANTYPE_IF ipv6 router-advert name-server "${lan_ip6addr_nomask}"
 
     commit
 	save
