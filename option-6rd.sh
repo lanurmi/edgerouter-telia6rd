@@ -198,8 +198,8 @@ log_6rd() {
 	source /opt/vyatta/etc/functions/script-template
 	configure
 	delete interfaces tunnel tun0
-	delete protocols static route6 "${delegated_prefix}" blackhole
-    delete protocols static interface-route6 ::/0 next-hop-interface tun0
+	delete protocols static route6 "${delegated_prefix}"
+	delete protocols static interface-route6 ::/0
 	delete interfaces $LANTYPE_IF address "${lan_ip6addr}"
 	delete interfaces $LANTYPE_IF ipv6
 	commit
