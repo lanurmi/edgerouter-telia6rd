@@ -40,7 +40,7 @@ log_6rd() {
 		LANTYPE_IF="ethernet eth1"
 	fi
 	
-	if ! ipv6calc -v; then
+	if ! which ipv6calc > /dev/null ; then
 		logger -p daemon.error -t option-6rd "ipv6calc is not installed, quitting"
 		return
 	fi
